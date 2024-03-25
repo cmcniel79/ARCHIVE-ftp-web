@@ -1,0 +1,169 @@
+@import '../../styles/propertySets.css';
+@import '../../styles/customMediaQueries.css';
+
+/* heroContainer gives the height for SectionHero */
+
+/* Safari has a bug with vw padding inside flexbox. Therefore we need an extra div (container) */
+
+/* If you've lot of content for the hero, multiple lines of text, make sure to adjust min-heights for each media breakpoint accordingly */
+
+.donateButton {
+  @apply --marketplaceButtonStyles;
+  color: white;
+  text-decoration: none !important;
+  @media (--viewportMedium) {
+    display: block;
+    width: 300px;
+  }
+  border-radius: 50px;
+}
+
+.donateSection {
+  margin: 35px auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  @media (--viewportLarge) {
+    width: 50%;
+    padding-top: 50px;
+    align-items: center;
+    text-align: center;
+    box-sizing: inherit;
+  }
+}
+
+.donateSubText .thirdDonate {
+  @media (--viewportLarge) {
+    width: 75%;
+  }
+}
+
+.donateContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.donateTitle {
+  text-align: center;
+  margin: auto;
+  width: 100%;
+  @media (--viewportMedium) {
+    width: 75%;
+  }
+}
+
+.sectionContentNarrow {
+  margin: 40px 24px 27px;
+  padding: 0;
+}
+
+.customSectionTitle {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 30px;
+  letter-spacing: -0.5px;
+  @media (--viewportMedium) {
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 48px;
+    letter-spacing: -1px;
+  }
+}
+
+.featuredListings {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-pack: start;
+  justify-content: space-between;
+  -webkit-box-align: start;
+  align-items: flex-start;
+  margin-top: 50px;
+}
+
+.listingCard {
+  width: 100%;
+  margin-bottom: 35px;
+  @media (--viewportMedium) {
+    width: 32.5%;
+  }
+}
+
+.hero {
+  flex-grow: 1;
+  justify-content: flex-end;
+  @media (--viewportLarge) {
+    justify-content: center;
+  }
+}
+
+.sections {
+  margin: 0;
+  padding-top: 1px;
+}
+
+.section {
+  overflow: auto;
+}
+
+/* Square corners for the last section if it's even */
+
+.section:nth-of-type(2n):last-of-type {
+  @media (--viewportMedium) {
+    border-radius: 4px 4px 0 0;
+  }
+}
+
+/* Every other section has a light background */
+
+.section:nth-of-type(2n) {
+  background-color: var(--matterColorLight);
+  @media (--viewportMedium) {
+    border-radius: 4px;
+  }
+}
+
+.sectionContent {
+  margin: var(--LandingPage_sectionMarginTop) 24px 51px 24px;
+  @media (--viewportMedium) {
+    max-width: 100%;
+    margin: var(--LandingPage_sectionMarginTopMedium) 24px 60px 24px;
+  }
+  @media (--viewportLarge) {
+    max-width: 1128px;
+    padding: 0 36px 0 36px;
+    margin: 60px auto 60px auto;
+  }
+  @media (--viewportXLarge) {
+    max-width: 1056px;
+    padding: 0;
+  }
+}
+
+.sectionContentFirstChild {
+  /* composes: sectionContent; */
+  margin-top: 3vh;
+}
+
+/* A bar on top of light sections */
+
+.section:nth-of-type(2n) .sectionContent::before {
+  background: var(--marketplaceColor);
+  content: '';
+  display: block;
+  width: 109px;
+  height: 6px;
+  /* Place the bar on top of .sectionContent top margin */
+  position: relative;
+  top: calc(-1 * var(--LandingPage_sectionMarginTop));
+  @media (--viewportMedium) {
+    width: 192px;
+    height: 8px;
+    top: calc(-1 * var(--LandingPage_sectionMarginTopMedium));
+  }
+  @media (--viewportLarge) {
+    top: calc(-1 * var(--LandingPage_sectionMarginTopLarge));
+  }
+}
